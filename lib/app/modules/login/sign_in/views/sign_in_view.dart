@@ -14,21 +14,21 @@ class SignInView extends GetView<SignInController> {
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.sizeOf(context);
-    return Scaffold(
-        backgroundColor: Colors.transparent,
-        body: Stack(
-          children: [
-            Image.asset(
-              "assets/img/sign_in_bg.png",
-              height: media.height,
-              fit: BoxFit.cover,
-            ),
-            SingleChildScrollView(
+    return Stack(
+      children: [
+        Image.asset(
+          "assets/img/sign_in_bg.png",
+          height: media.height,
+          fit: BoxFit.fitHeight,
+        ),
+        Scaffold(
+            backgroundColor: Colors.transparent,
+            body: SingleChildScrollView(
               child: SafeArea(
                   child: Column(
                 children: [
                   SizedBox(
-                    height: media.height * 0.5,
+                    height: media.height * 0.28,
                   ),
                   Container(
                     margin: const EdgeInsets.symmetric(horizontal: 8),
@@ -59,11 +59,15 @@ class SignInView extends GetView<SignInController> {
                                 height: 4,
                               ),
                               TextField(
+                                onTapOutside: (_) =>
+                                    FocusScope.of(context).unfocus(),
                                 controller: controller.txtMobils,
                                 keyboardType: TextInputType.phone,
                                 style: const TextStyle(
                                     fontSize: 18, fontWeight: FontWeight.w600),
                                 decoration: InputDecoration(
+                                    contentPadding: const EdgeInsets.fromLTRB(
+                                        20.0, 15.0, 20.0, 15.0),
                                     prefixIcon: GestureDetector(
                                         onTap: () async {
                                           final code = await controller
@@ -101,11 +105,18 @@ class SignInView extends GetView<SignInController> {
                                             ],
                                           ),
                                         )),
+                                    enabledBorder: InputBorder.none,
+                                    focusedBorder: InputBorder.none,
                                     border: InputBorder.none,
                                     hintText: "Mobile Number",
                                     hintStyle: TextStyle(
                                         color: TColor.placeholder,
                                         fontSize: 17)),
+                              ),
+                              Container(
+                                width: double.maxFinite,
+                                height: 1,
+                                color: TColor.secondaryText,
                               ),
                               const SizedBox(
                                 height: 4,
@@ -134,9 +145,9 @@ class SignInView extends GetView<SignInController> {
                   )
                 ],
               )),
-            )
-          ],
-        ));
+            )),
+      ],
+    );
   }
 
   List<Padding> signOnButton() => SingleSignOnViewModel()
