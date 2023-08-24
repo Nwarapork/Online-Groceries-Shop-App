@@ -158,7 +158,7 @@ class SignInView extends GetView<SignInController> {
                 title: item.title,
                 icon: item.icon,
                 bgColor: item.backgroundColor,
-                onPressed: () {}),
+                onPressed: item.onPressed),
           ))
       .toList();
 }

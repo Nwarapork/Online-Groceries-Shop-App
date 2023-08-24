@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:online_groceries/common/color_extension.dart';
 
+// no icon
 class RoundButton extends StatelessWidget {
   final String title;
   final Color color;
@@ -26,7 +27,7 @@ class RoundButton extends StatelessWidget {
         title,
         style: TextStyle(
             color: color.withOpacity(0.7),
-            fontSize: 18,
+            fontSize: 28,
             fontWeight: FontWeight.w500),
       ),
     );

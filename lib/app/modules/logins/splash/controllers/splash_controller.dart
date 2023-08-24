@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:online_groceries/app/modules/login/welcome/views/welcome_view.dart';
+import 'package:online_groceries/app/modules/logins/welcome/views/welcome_view.dart';
 
 class SplashController extends GetxController {
   //TODO: Implement SplashController
