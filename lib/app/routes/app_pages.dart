@@ -8,6 +8,8 @@ import '../modules/logins/select_location/bindings/select_location_binding.dart'
 import '../modules/logins/select_location/views/select_location_view.dart';
 import '../modules/logins/sign_in/bindings/sign_in_binding.dart';
 import '../modules/logins/sign_in/views/sign_in_view.dart';
+import '../modules/logins/sign_up/bindings/sign_up_binding.dart';
+import '../modules/logins/sign_up/views/sign_up_view.dart';
 import '../modules/logins/splash/bindings/splash_binding.dart';
 import '../modules/logins/splash/views/splash_view.dart';
 import '../modules/logins/verification/bindings/verification_binding.dart';
@@ -57,6 +59,11 @@ class AppPages {
       name: _Paths.LOGIN,
       page: () => const LoginView(),
       binding: LoginBinding(),
+    ),
+    GetPage(
+      name: _Paths.SIGN_UP,
+      page: () => const SignUpView(),
+      binding: SignUpBinding(),
     ),
   ];
 }

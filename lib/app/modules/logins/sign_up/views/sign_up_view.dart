@@ -1,17 +1,16 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
-import 'package:online_groceries/app/modules/main_tabview/main_tabview.dart';
 import 'package:online_groceries/common/color_extension.dart';
-import 'package:online_groceries/common_widget/dropdown.dart';
 import 'package:online_groceries/common_widget/line_textfield.dart';
 import 'package:online_groceries/common_widget/round_button.dart';
 
-import '../controllers/login_controller.dart';
+import '../controllers/sign_up_controller.dart';
 
-class LoginView extends GetView<LoginController> {
-  const LoginView({Key? key}) : super(key: key);
+class SignUpView extends GetView<SignUpController> {
+  const SignUpView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
@@ -39,7 +38,7 @@ class LoginView extends GetView<LoginController> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      "Login",
+                      "Sign Up",
                       style: TextStyle(
                           color: TColor.primaryText,
                           fontSize: 26,
@@ -50,13 +49,34 @@ class LoginView extends GetView<LoginController> {
                 const SizedBox(
                   height: 8,
                 ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Enter your credentials to continue",
+                      style: TextStyle(
+                          color: TColor.secondaryText,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w600),
+                    ),
+                  ],
+                ),
                 const SizedBox(
-                  height: 12,
+                  height: 24,
+                ),
+                LineTextField(
+                  controller: controller.txtUsername,
+                  title: "Username",
+                  placeholder: "Enter your username",
+                  typeText: TextInputType.emailAddress,
+                ),
+                SizedBox(
+                  height: media.height * 0.04,
                 ),
                 LineTextField(
                   controller: controller.txtEmail,
                   title: "Email",
-                  placeholder: "Enter your email address",
+                  placeholder: "Enter your email",
                   typeText: TextInputType.emailAddress,
                 ),
                 SizedBox(
@@ -92,18 +112,45 @@ class LoginView extends GetView<LoginController> {
                         ))
                   ],
                 ),
+                RichText(
+                    text: TextSpan(
+                        style: TextStyle(
+                            color: TColor.secondaryText,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500),
+                        children: [
+                      const TextSpan(
+                        text: "By continue you agree to our ",
+                      ),
+                      TextSpan(
+                          text: "Terms of Service",
+                          style: TextStyle(
+                              color: TColor.primary,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              print("Terms of Service");
+                            }),
+                      const TextSpan(
+                        text: " and ",
+                      ),
+                      TextSpan(
+                          text: "Privacy Policy",
+                          style: TextStyle(
+                              color: TColor.primary,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              print("Privacy Policy");
+                            }),
+                    ])),
                 SizedBox(
                   height: media.height * 0.01,
                 ),
                 RoundButton(
-                    title: "Login",
-                    color: Colors.white,
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const MainTabView()));
-                    }),
+                    title: "Login", color: Colors.white, onPressed: () {}),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
